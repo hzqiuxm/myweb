@@ -26,7 +26,7 @@
   <thead>
   <tr>
     <th data-field="id">ID</th>
-    <th data-field="resumeName">标签名</th>
+    <th data-field="resumeName">标签名1</th>
     <th data-field="resumeFileName" data-events="actionEvents">文件名称</th>
 
   </tr>
