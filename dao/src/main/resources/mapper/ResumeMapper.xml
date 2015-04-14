@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qiuxm.myweb.dao.interfaces.ResumeMapper" >
+  <resultMap id="BaseResultMap" type="com.qiuxm.myweb.dao.entity.Resume" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="resume_name" property="resumeName" jdbcType="VARCHAR" />
+    <result column="resume_file_name" property="resumeFileName" jdbcType="VARCHAR" />
+    <result column="resume_type" property="resumeType" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_update" property="gmtUpdate" jdbcType="TIMESTAMP" />
+    <result column="notes" property="notes" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.qiuxm.myweb.dao.entity.Resume" extends="BaseResultMap" >
+    <result column="resume_article" property="resumeArticle" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, resume_name, resume_file_name, resume_type, gmt_create, gmt_update, notes
+  </sql>
+  <sql id="Blob_Column_List" >
+    resume_article
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qy_resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qy_resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qiuxm.myweb.dao.entity.Resume" >
+    insert into qy_resume (id, resume_name, resume_file_name, 
+      resume_type, gmt_create, gmt_update, 
+      notes, resume_article)
+    values (#{id,jdbcType=INTEGER}, #{resumeName,jdbcType=VARCHAR}, #{resumeFileName,jdbcType=VARCHAR}, 
+      #{resumeType,jdbcType=CHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP}, 
+      #{notes,jdbcType=VARCHAR}, #{resumeArticle,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qiuxm.myweb.dao.entity.Resume" >
+    insert into qy_resume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="resumeName != null" >
+        resume_name,
+      </if>
+      <if test="resumeFileName != null" >
+        resume_file_name,
+      </if>
+      <if test="resumeType != null" >
+        resume_type,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtUpdate != null" >
+        gmt_update,
+      </if>
+      <if test="notes != null" >
+        notes,
+      </if>
+      <if test="resumeArticle != null" >
+        resume_article,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="resumeName != null" >
+        #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFileName != null" >
+        #{resumeFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeType != null" >
+        #{resumeType,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdate != null" >
+        #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeArticle != null" >
+        #{resumeArticle,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qiuxm.myweb.dao.entity.Resume" >
+    update qy_resume
+    <set >
+      <if test="resumeName != null" >
+        resume_name = #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFileName != null" >
+        resume_file_name = #{resumeFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeType != null" >
+        resume_type = #{resumeType,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdate != null" >
+        gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notes != null" >
+        notes = #{notes,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeArticle != null" >
+        resume_article = #{resumeArticle,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qiuxm.myweb.dao.entity.Resume" >
+    update qy_resume
+    set resume_name = #{resumeName,jdbcType=VARCHAR},
+      resume_file_name = #{resumeFileName,jdbcType=VARCHAR},
+      resume_type = #{resumeType,jdbcType=CHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      notes = #{notes,jdbcType=VARCHAR},
+      resume_article = #{resumeArticle,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qiuxm.myweb.dao.entity.Resume" >
+    update qy_resume
+    set resume_name = #{resumeName,jdbcType=VARCHAR},
+      resume_file_name = #{resumeFileName,jdbcType=VARCHAR},
+      resume_type = #{resumeType,jdbcType=CHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      notes = #{notes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryListByCondition" parameterType="com.qiuxm.myweb.dao.entity.Resume" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from qy_resume
+    <where>
+      <if test="resumeName != null" >
+        resume_name = #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFileName != null" >
+        resume_file_name = #{resumeFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeType != null" >
+        resume_type = #{resumeType,jdbcType=CHAR},
+      </if>
+
+    </where>
+    ORDER BY GMT_CREATE DESC
+  </select>
+
+</mapper>

@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>myweb</artifactId>
+        <groupId>com.qiuxm</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>webapp</artifactId>
+    <packaging>war</packaging>
+    <name>webapp Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baidu.ueditor</groupId>
+            <artifactId>ueditor</artifactId>
+        </dependency>
+        <!--依赖其他模块 -->
+        <dependency>
+            <groupId>com.qiuxm</groupId>
+            <artifactId>web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>webapp</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+                <resourceEncoding>UTF-8</resourceEncoding>
+                <warName>myweb</warName>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>tomcat-maven-plugin</artifactId>
+            <version>1.1</version>
+            <configuration>
+                <path>/myweb</path>
+                <url>${cargo.container.manager.url}</url>
+                <!--<contractname>${cargo.container.contractname}</contractname>-->
+                <password>${cargo.container.password}</password>
+                <warDirectory>${basedir}/src/main/webapp</warDirectory>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>tomcat-deploy</id>
+                    <phase>deploy</phase>
+                    <goals>
+                        <goal>deploy</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+    </build>
+    <properties>
+        <!-- Cargo settings -->
+        <cargo.container.manager.url>http://localhost:8080/manager/html</cargo.container.manager.url>
+        <cargo.container.contractname>admin</cargo.container.contractname>
+        <cargo.container.password>123456</cargo.container.password>
+        <cargo.wait>false</cargo.wait>
+    </properties>
+</project>
