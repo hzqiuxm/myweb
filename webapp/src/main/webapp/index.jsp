@@ -114,7 +114,7 @@
             <div class="span_of_4"><!-- start span_of_4 -->
                 <div class="col-md-3 span1_of_4">
                     <div class="span4_of_list">
-                        <span class="active"><i class="fa fa-thumbs-o-up"></i></span>
+                        <span><i class="fa fa-thumbs-o-up"></i></span>
                         <h3>suspendisse</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                         <div class="read_more">
