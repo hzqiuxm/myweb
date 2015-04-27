@@ -59,7 +59,9 @@ ${result.name}
       type : "POST",
       url : "resume/test1",
       success : function(result) {
-        $('span').text(result.name);
+        console.log("=======");
+        console.log("result:"+result);
+        $('span').text(result.rows[0].resumeName);
       }
     });
   });

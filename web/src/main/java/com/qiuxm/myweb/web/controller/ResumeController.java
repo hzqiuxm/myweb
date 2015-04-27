@@ -44,8 +44,23 @@ public class ResumeController {
         modelMap.put("retcode",200);
         modelMap.put("msg","success");
 
-        log.info("test1(222) is end! ... ...");
+        log.info("test1(111) is end! ... ...");
         return  modelMap;
+    }
+
+    @RequestMapping(value = "/test2",method = RequestMethod.POST)
+    public String test2(ModelMap modelMap){
+
+//         = new ModelMap();
+        log.info("test2() is begin ... ...");
+        Resume queryCondition = new Resume();
+        List<Resume> resumeList = resumeService.queryListByCondition(queryCondition);
+        modelMap.put("rows", resumeList);
+        modelMap.put("retcode",200);
+        modelMap.put("msg","success");
+
+        log.info("test2(222) is end! ... ...");
+        return  "resume";
     }
 
     @ResponseBody
