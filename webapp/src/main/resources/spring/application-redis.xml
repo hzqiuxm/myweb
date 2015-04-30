@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+              <property name="maxTotal" value="${redis.maxTotal}" />
+              <property name="maxIdle" value="${redis.maxIdle}" />
+              <property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}" />
+              <property name="minEvictableIdleTimeMillis" value="${redis.minEvictableIdleTimeMillis}" />
+              <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+       </bean>
+
+       <!--&lt;!&ndash; redisTemplate配置，redisTemplate是对Jedis的对redis操作的扩展，有更多的操作，封装使操作更便捷 &ndash;&gt;-->
+       <!--<bean id="redisTemplate" class="org.springframework." factory-ref="jedisConnectionFactory" />-->
+
+
+       <bean id="jedis.shardInfo" class="redis.clients.jedis.JedisShardInfo">
+              <constructor-arg name="host" value="${redis.host}" />
+              <constructor-arg name="port" value="${redis.port}" />
+              <constructor-arg name="timeout" value="${redis.timeout}" />
+       </bean>
+       <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+              <constructor-arg index="0" ref="jedisPoolConfig" />
+              <constructor-arg index="1">
+                     <list>
+                            <ref bean="jedis.shardInfo" />
+                     </list>
+              </constructor-arg>
+       </bean>
+       <bean id="shardedJedis" factory-bean="shardedJedisPool"
+             factory-method="getResource" />
+</beans>

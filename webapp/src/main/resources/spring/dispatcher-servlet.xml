@@ -42,6 +42,9 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <bean id="SpringContextUtil " class="com.qiuxm.myweb.common.SpringContextUtil" >
+    </bean>
+
     <!-- 通用异常处理 -->
     <bean id="exceptionResolver"
           class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

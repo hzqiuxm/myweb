@@ -14,10 +14,20 @@
 
     <!-- 资源属性配置器，加载Properties 可配置在web.xml中 -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:properties/jdbc.properties" />
-	</bean>
-
-
+        <!--单个文件配置 -->
+        <!--
+        <property name="location">
+            <value>classpath:properties/jdbc.properties</value>
+        </property>
+        -->
+        <!--多个文件配置 -->
+        <property name="locations">
+            <list>
+                <value>classpath:properties/jdbc.properties</value>
+                <value>classpath:properties/redis.properties</value>
+            </list>
+        </property>
+    </bean>
   	<import resource="classpath:mybatis/mybatis-db.xml"/>
 
 </beans>

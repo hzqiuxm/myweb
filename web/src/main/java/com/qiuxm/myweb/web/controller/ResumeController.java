@@ -3,6 +3,7 @@ package com.qiuxm.myweb.web.controller;
  * Created by hzqiuxm on 2015/3/31.
  */
 
+import com.qiuxm.myweb.common.SpringContextUtil;
 import com.qiuxm.myweb.dao.entity.Resume;
 import com.qiuxm.myweb.service.interfaces.IResumeService;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.ShardedJedis;
 
 import java.util.List;
 
@@ -91,6 +93,18 @@ public class ResumeController {
     public String test(){
 
         log.info("========resumne test=========");
+        return "test";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/redis", method = RequestMethod.GET)
+    public String redis(){
+
+        log.info("========resumne redis begin=========");
+        ShardedJedis shardedJedis = (ShardedJedis) SpringContextUtil.getBean("shardedJedis");
+        System.out.println(SpringContextUtil.isSingleton("shardedJedis"));
+        System.out.println("判断qxm键是否存在：" + shardedJedis.exists("qxm"));
+        log.info("========resumne redis end=========");
         return "test";
     }
 
