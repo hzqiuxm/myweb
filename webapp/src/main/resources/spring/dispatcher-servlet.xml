@@ -42,6 +42,7 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!--spring 上下文工具类 -->
     <bean id="SpringContextUtil " class="com.qiuxm.myweb.common.SpringContextUtil" >
     </bean>
 
