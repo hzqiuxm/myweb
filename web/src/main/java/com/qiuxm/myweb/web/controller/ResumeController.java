@@ -3,6 +3,8 @@ package com.qiuxm.myweb.web.controller;
  * Created by hzqiuxm on 2015/3/31.
  */
 
+import com.qiuxm.myweb.common.FindclientIP;
+import com.qiuxm.myweb.common.IPAddressUtil;
 import com.qiuxm.myweb.common.SpringContextUtil;
 import com.qiuxm.myweb.dao.entity.Resume;
 import com.qiuxm.myweb.service.interfaces.IResumeService;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.ShardedJedis;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -28,9 +31,12 @@ public class ResumeController {
     private IResumeService resumeService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(ModelMap modelMap){
-
-        modelMap.put("name","照片墙");
+    public String home(ModelMap modelMap,HttpServletRequest httpRequest){
+        System.out.println("=======================================");
+        String strip = FindclientIP.getIpAddr(httpRequest);
+        System.out.println("本次访问的IP地址是："+strip);
+        System.out.println("它的来源是："+ IPAddressUtil.getIpContents(strip));
+        modelMap.put("name", "照片墙");
         return  "resume";
     }
 
