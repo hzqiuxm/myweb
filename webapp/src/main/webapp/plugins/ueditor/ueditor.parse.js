@@ -1,7 +1,7 @@
 /*!
  * UEditor
  * version: ueditor
- * build: Thu May 29 2014 16:47:57 GMT+0800 (中国标准时间)
+ * build: Fri May 16 2014 14:14:42 GMT+0800 (中国标准时间)
  */
 
 (function(){
@@ -641,7 +641,7 @@ UE.parse.register('charts',function( utils ){
         if ( !window.jQuery ) {
 
             utils.loadFile(document,{
-                src : resourceRoot + "${ctx}plugins/jquery/jquery-1.11.1.min.js",
+                src : resourceRoot + "/third-party/jquery-1.10.2.min.js",
                 tag : "script",
                 type : "text/javascript",
                 defer : "defer"

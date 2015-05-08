@@ -306,6 +306,17 @@
                 <artifactId>common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.yunhetong.utils</groupId>
+                <artifactId>MemcacheUtils</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yunhetong.user</groupId>
+                <artifactId>user-common-facade</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>

@@ -114,4 +114,11 @@ public class ResumeController {
         return "test";
     }
 
+    @RequestMapping(value = "/uetest", method = RequestMethod.GET)
+    public String uetest(){
+
+        log.info("========ue test=========");
+        return "uetest";
+    }
+
 }

@@ -56,5 +56,10 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.yunhetong.user</groupId>
+            <artifactId>user-common-facade</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

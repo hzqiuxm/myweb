@@ -17,9 +17,8 @@
      * "相对于网站根目录的相对路径"也就是以斜杠开头的形如"/myProject/ueditor/"这样的路径。
      * 如果站点中有多个不在同一层级的页面需要实例化编辑器，且引用了同一UEditor的时候，此处的URL可能不适用于每个页面的编辑器。
      * 因此，UEditor提供了针对不同页面的编辑器可单独配置的根路径，具体来说，在需要实例化编辑器的页面最顶部写上如下代码即可。当然，需要令此处的URL等于对应的配置。
-     * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";window.UEDITOR_HOME_URL = "/home/files/";
+     * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
-	window.UEDITOR_HOME_URL = "/contract/plugins/ueditor/";
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
 
     /**
@@ -32,14 +31,21 @@
 
         // 服务器统一请求接口路径
         , serverUrl: URL + "jsp/controller.jsp"
+
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
-        , toolbars: [["source","undo","redo","paragraph","fontsize","bold","italic","underline","strikethrough",
-					  "superscript","subscript","touppercase","tolowercase","justifyleft","justifycenter","justifyright","justifyjustify",
-					  "indent","rowspacingbottom","rowspacingtop","lineheight","autotypeset","searchreplace"],
-					 ["removeformat","formatmatch","cleardoc","selectall","date","time","spechars","pasteplain",
-					  "inserttable","deletetable","mergeright","mergedown","splittorows","splittocols","splittocells","mergecells",
-					  "insertcol","insertrow","deletecol","deleterow","insertparagraphbeforetable",
-					  "simpleupload","wordimage","imagenone","imageleft","imageright","imagecenter","attachment","preview","fullscreen"]]
+        , toolbars: [[
+            'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+            'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+            'print', 'preview', 'searchreplace', 'help', 'drafts'
+        ]]
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         //,labelMap:{
         //    'anchor':'', 'undo':''
@@ -72,7 +78,7 @@
 
         //,autoClearinitialContent:true //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
 
-        ,focus:true //初始化时，是否让编辑器获得焦点true或false
+        //,focus:false //初始化时，是否让编辑器获得焦点true或false
 
         //如果自定义，最好给p标签如下的行高，要不输入中文时，会有跳动感
         //,initialStyle:'p{line-height:1em}'//编辑器层级的基数,可以用来改变字体等
@@ -83,8 +89,8 @@
         //首行缩进距离,默认是2em
         //,indentValue:'2em'
 
-        //,initialFrameWidth:800  //初始化编辑器宽度,默认1000
-        //,initialFrameHeight:500  //初始化编辑器高度,默认320
+        //,initialFrameWidth:1000  //初始化编辑器宽度,默认1000
+        //,initialFrameHeight:320  //初始化编辑器高度,默认320
 
         //,readonly : false //编辑器初始化结束后,编辑区域是否是只读的，默认是false
 
@@ -101,9 +107,6 @@
 
         //,autoSyncData:true //自动同步编辑器要提交的数据
         //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
-
-        //粘贴只保留标签，去除标签所有属性
-        //,retainOnlyLabelPasted: false
 
         //,pasteplain:false  //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
         //纯文本粘贴模式下的过滤规则
@@ -221,8 +224,6 @@
         //    {tag:'span',name:'hi', label:'', style:'font-style:italic;font-weight:bold;color:rgb(51, 153, 204)'}
         //]
 
-        //打开右键菜单功能
-        //,enableContextMenu: true
         //右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子，label留空支持国际化，否则以此配置为准
         //,contextMenu:[
         //    {
@@ -237,7 +238,7 @@
         //]
 
         //快捷菜单
-        ,shortcutMenu:["paragraph", "fontsize", "bold", "italic", "underline", "forecolor", "backcolor", "insertorderedlist", "insertunorderedlist"]
+        //,shortcutMenu:["fontfamily", "fontsize", "bold", "italic", "underline", "forecolor", "backcolor", "insertorderedlist", "insertunorderedlist"]
 
         //elementPathEnabled
         //是否启用元素路径，默认是显示
@@ -245,7 +246,7 @@
 
         //wordCount
         //,wordCount:true          //是否开启字数统计
-        ,maximumWords:200000       //允许的最大字符数
+        //,maximumWords:10000       //允许的最大字符数
         //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数,留空支持多语言自动切换，否则按此配置显示
         //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
         //超出字数限制提示  留空支持多语言自动切换，否则按此配置显示
@@ -271,7 +272,7 @@
 
         //autoHeightEnabled
         // 是否自动长高,默认true
-        ,autoHeightEnabled:false
+        //,autoHeightEnabled:true
 
         //scaleEnabled
         //是否可以拉伸长高,默认true(当开启时，自动长高失效)
