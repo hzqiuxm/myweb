@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<!--<convert converter="bean" match="test.demo.Message" />-->
+		<!--<create creator="new" javascript="JavaChat">-->
+			 <!--<param name="class" value="test.demo.JavaChat"/>-->
+			  <!--<include method="addMessage" />-->
+		<!--</create>-->
+		<!--<create creator="new" javascript="Clock">-->
+			 <!--<param name="class" value="test.demo.Clock"/>-->
+		<!--</create>-->
+		<!--<create creator="new" javascript="JavascriptChat">-->
+			 <!--<param name="class" value="test.demo.JavascriptChat"/>-->
+		<!--</create>-->
+			<create creator="new" javascript="service">
+				<param name="class" value="com.qiuxm.myweb.web.controller.Service"/>
+			</create>
+
+	</allow>
+</dwr>

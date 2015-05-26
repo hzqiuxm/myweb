@@ -11,6 +11,15 @@
     <name>webapp Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+
+        <dependency>
+            <groupId>dwr</groupId>
+            <artifactId>dwr</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.directwebremoting</groupId>
+            <artifactId>dwr</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
