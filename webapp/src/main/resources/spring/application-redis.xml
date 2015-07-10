@@ -12,7 +12,7 @@
        </bean>
 
        <!--&lt;!&ndash; redisTemplate配置，redisTemplate是对Jedis的对redis操作的扩展，有更多的操作，封装使操作更便捷 &ndash;&gt;-->
-       <!--<bean id="redisTemplate" class="org.springframework." factory-ref="jedisConnectionFactory" />-->
+       <!--<bean id="redisTemplate" class="org.springframework." simplefactory-ref="jedisConnectionFactory" />-->
 
 
        <bean id="jedis.shardInfo" class="redis.clients.jedis.JedisShardInfo">

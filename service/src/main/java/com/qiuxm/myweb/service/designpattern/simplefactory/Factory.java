@@ -1,8 +1,6 @@
-package com.qiuxm.myweb.service.factory;/**
+package com.qiuxm.myweb.service.designpattern.simplefactory;/**
  * Created by hzqiuxm on 2015/3/28.
  */
-
-import com.qiuxm.myweb.service.interfaces.Api;
 
 import java.io.IOException;
 import java.io.InputStream;

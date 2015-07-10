@@ -23,6 +23,7 @@
 		<property name="maxTotal" value="${dbcp.maxTotal}" />
 		<property name="maxIdle" value="${dbcp.maxIdle}" />
 		<property name="maxWaitMillis" value="${dbcp.maxWaitMillis}" />
+		<property name="removeAbandonedOnBorrow" value="true"></property>
 	</bean>
 	
 	<!-- SqlSessionFactory -->

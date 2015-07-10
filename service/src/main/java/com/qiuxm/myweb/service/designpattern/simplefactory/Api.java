@@ -1,4 +1,4 @@
-package com.qiuxm.myweb.service.interfaces;/**
+package com.qiuxm.myweb.service.designpattern.simplefactory;/**
  * Created by hzqiuxm on 2015/3/28.
  */
 

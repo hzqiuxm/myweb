@@ -32,8 +32,26 @@
       })
     })
   </script>
-
+  <script>
+      var funcGetSelectText = function(){
+          var txt = '';
+          if(document.selection){
+              txt = document.selection.createRange().text;//ie
+          }else{
+              txt = document.getSelection();
+          }
+          return txt.toString();
+      }
+      var container = container || document;
+      container.onmouseup = function(){
+          var txt = funcGetSelectText();
+          if(txt)
+          {
+              alert(txt);
+          }
+      }
+  </script>
 <input id = "b1" type="button" value="查看编辑器内容">
-<p id = "p1"></p>
+<p id = "p1">fffffffffffffffffff</p>
   </body>
 </html>
