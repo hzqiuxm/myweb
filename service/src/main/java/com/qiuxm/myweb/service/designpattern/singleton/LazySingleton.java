@@ -1,12 +1,14 @@
 package com.qiuxm.myweb.service.designpattern.singleton;
 
+import org.apache.log4j.Logger;
+
 /**
  * Created by hzqixm on 2015/7/11.
  * 懒汉模式单例示例
  * 思想：以空间换时间，线程不安全的
  */
 public class LazySingleton {
-
+    private static final Logger log = Logger.getLogger(LazySingleton.class);
     //4.定义一个变量来存储实例对象
     //5.因为这个变量要在静态方法中使用，所以也要声明为static
     private static LazySingleton instance = null;
