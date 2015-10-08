@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ÏíÔª¹¤³§£¬Í¨³£ÊµÏÖ³ÉÎªµ¥Àı
+ * äº«å…ƒå·¥å‚ï¼Œé€šå¸¸å®ç°æˆä¸ºå•ä¾‹
  */
 public class FlyweightFactory {
 	private static FlyweightFactory factory = new FlyweightFactory();
@@ -15,17 +15,17 @@ public class FlyweightFactory {
 		return factory;
 	}
 	/**
-	 * »º´æ¶à¸öflyweight¶ÔÏó
+	 * ç¼“å­˜å¤šä¸ªflyweightå¯¹è±¡
 	 */
 	private Map<String,Flyweight> fsMap = new HashMap<String,Flyweight>();
 	/**
-	 * »ñÈ¡key¶ÔÓ¦µÄÏíÔª¶ÔÏó
-	 * @param key »ñÈ¡ÏíÔª¶ÔÏóµÄkey
-	 * @return key¶ÔÓ¦µÄÏíÔª¶ÔÏó
+	 * è·å–keyå¯¹åº”çš„äº«å…ƒå¯¹è±¡
+	 * @param key è·å–äº«å…ƒå¯¹è±¡çš„key
+	 * @return keyå¯¹åº”çš„äº«å…ƒå¯¹è±¡
 	 */
 	public Flyweight getFlyweight(String key) {
 		Flyweight f = fsMap.get(key);
-		//»»Ò»¸ö¸ü¼òµ¥µãµÄĞ´·¨
+		//æ¢ä¸€ä¸ªæ›´ç®€å•ç‚¹çš„å†™æ³•
 		if(f==null){
 			f = new AuthorizationFlyweight(key);
 			fsMap.put(key,f);

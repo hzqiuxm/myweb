@@ -37,12 +37,12 @@ public class AuthorizationModel {
         this.permit = permit;
     }
 
-    @Override
-    public String toString() {
-        return "AuthorizationModel{" +
-                "user='" + user + '\'' +
-                ", securityEntity='" + securityEntity + '\'' +
-                ", permit='" + permit + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "AuthorizationModel{" +
+//                "user='" + user + '\'' +
+//                ", securityEntity='" + securityEntity + '\'' +
+//                ", permit='" + permit + '\'' +
+//                '}';
+//    }
 }

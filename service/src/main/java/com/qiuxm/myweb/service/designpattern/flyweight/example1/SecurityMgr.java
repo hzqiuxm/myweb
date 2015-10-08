@@ -42,7 +42,7 @@ public class SecurityMgr {
     public boolean hasPermit(String user,String securityEntity,String permit){
         Collection<AuthorizationModel> col = map.get(user);
         if(col==null || col.size()==0){
-            System.out.println(user+"没有登录或是没有被分配任何权限");
+//            System.out.println(user+"没有登录或是没有被分配任何权限");
             return false;
         }
         for(AuthorizationModel am : col){

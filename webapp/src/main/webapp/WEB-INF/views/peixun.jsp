@@ -28,49 +28,57 @@
   <%--<hr>--%>
   <%--World's population : {{ population }} millions--%>
 <%--</ul>--%>
-<div ng-app="">
+<%--<div ng-app="">--%>
 
-  <div ng-controller="cartController" class="container">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>产品编号</th>
-        <th>产品名称</th>
-        <th>购买数量</th>
-        <th>产品单价</th>
-        <th>产品总价</th>
-        <th>操作</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="item in cart">
-        <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
-        <td>
-          <button type="button" ng-click="reduce(item.id)" class="btn btn-info">-</button>
-          <input type="text" name="" ng-model="item.quantity" value="{{item.quantity}}"/>
-          <button type="button" ng-click="add(item.id)" class="btn btn-info">+</button>
-        </td>
-        <td>{{item.price}}</td>
-        <td>{{item.price * item.quantity}}</td>
-        <td><button type="button" ng-click="remove(item.id)" class="btn btn-danger">删除</button></td>
-      </tr>
+  <%--<div ng-controller="cartController" class="container">--%>
+    <%--<table class="table">--%>
+      <%--<thead>--%>
+      <%--<tr>--%>
+        <%--<th>产品编号</th>--%>
+        <%--<th>产品名称</th>--%>
+        <%--<th>购买数量</th>--%>
+        <%--<th>产品单价</th>--%>
+        <%--<th>产品总价</th>--%>
+        <%--<th>操作</th>--%>
+      <%--</tr>--%>
+      <%--</thead>--%>
+      <%--<tbody>--%>
+      <%--<tr ng-repeat="item in cart">--%>
+        <%--<td>{{item.id}}</td>--%>
+        <%--<td>{{item.name}}</td>--%>
+        <%--<td>--%>
+          <%--<button type="button" ng-click="reduce(item.id)" class="btn btn-info">-</button>--%>
+          <%--<input type="text" name="" ng-model="item.quantity" value="{{item.quantity}}"/>--%>
+          <%--<button type="button" ng-click="add(item.id)" class="btn btn-info">+</button>--%>
+        <%--</td>--%>
+        <%--<td>{{item.price}}</td>--%>
+        <%--<td>{{item.price * item.quantity}}</td>--%>
+        <%--<td><button type="button" ng-click="remove(item.id)" class="btn btn-danger">删除</button></td>--%>
+      <%--</tr>--%>
 
-      <tr>
-        <td>总购买价：{{totalprice()}} </td>
-        <td></td>
-        <td>总购买数量：{{totalcount()}}</td>
-        <td></td>
-        <td><button type="button" ng-click="removeall()" class="btn btn-primary">清空购物车</button></td>
-        <td></td>
+      <%--<tr>--%>
+        <%--<td>总购买价：{{totalprice()}} </td>--%>
+        <%--<td></td>--%>
+        <%--<td>总购买数量：{{totalcount()}}</td>--%>
+        <%--<td></td>--%>
+        <%--<td><button type="button" ng-click="removeall()" class="btn btn-primary">清空购物车</button></td>--%>
+        <%--<td></td>--%>
 
-      </tr>
-      </tbody>
-    </table>
+      <%--</tr>--%>
+      <%--</tbody>--%>
+    <%--</table>--%>
 
-  </div>
-</div>
+  <%--</div>--%>
+<%--</div>--%>
 
+
+  <form action="/peixun/user" method="post">
+                   用户名：<input type="text" name="users[0].username"><br/>
+                   密码：<input type="text" name="users[0].password"><br/>
+                   用户名：<input type="text" name="users[1].username"><br/>
+                   密码：<input type="text" name="users[1].password"><br/>
+                   <input type="submit">
+  </form>
 
 </body>
 </html>
